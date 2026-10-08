@@ -1,0 +1,24 @@
+services:
+  xinyu-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xinyu-api
+    env_file:
+      - .env
+    environment:
+      SQLITE_PATH: /app/data/xinyu.sqlite3
+      CHROMA_PATH: /app/data/xinyu_chroma
+    ports:
+      - "8000:8000"
+    volumes:
+      - xinyu_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  xinyu_data:

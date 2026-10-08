@@ -1,0 +1,4 @@
+# Optional production dependencies for the multi-instance deployment profile.
+psycopg[binary]>=3.2.0
+qdrant-client>=1.12.0
+alembic>=1.14.0

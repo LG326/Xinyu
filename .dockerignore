@@ -1,0 +1,12 @@
+.git
+.env
+.venv
+venv
+__pycache__
+*.py[cod]
+data
+web
+web-chatui
+docs
+tests
+*.sqlite3
